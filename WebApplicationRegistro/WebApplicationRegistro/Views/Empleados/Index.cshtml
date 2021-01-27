@@ -1,0 +1,85 @@
+﻿@model IEnumerable<WebApplicationRegistro.Context.Empleado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="form-group">
+    <div class="col-md-6 col-md-12">
+        <h2 style="color:darkorange;font-family:Castellar"><i>Lista de Empleados</i></h2>
+    </div>
+    <br />
+    <div class="col-md-4 col-md-12">
+        <div style="font-size:18px" class="btn btn-success">
+            @Html.ActionLink("Nuevo", "Create")
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<table style="background-color:gray" class="table table-striped">
+    <tr style="color:darkorange;font-family:'Lucida Sans'">
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cedula)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Entrada)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salida)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr style="color:darkgreen">
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefono)
+            </td>
+            <td style="color:red">
+                @Html.DisplayFor(modelItem => item.Entrada)
+            </td>
+            <td style="color:red">
+                @Html.DisplayFor(modelItem => item.Salida)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                <div class="form-group">
+                    <div class="col-ml-2 col-md-10">
+                        <div style="font-size:15px;width:80px" class="btn btn-info">
+                            @Html.ActionLink("Editar", "Edit", new { id = item.Id })
+                        </div>
+                        <div style="font-size:15px;width:90px" class="btn btn-default">
+                            @Html.ActionLink("Registrar", "Register", new { id = item.Id })
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+
+</table>

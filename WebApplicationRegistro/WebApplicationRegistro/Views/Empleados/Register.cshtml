@@ -1,0 +1,69 @@
+﻿@model WebApplicationRegistro.Context.Empleado
+
+@{
+    ViewBag.Title = "Registrar";
+}
+
+<h2 style="color:#A0BDD9;font-family:Castellar">Registrar</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4 style="color:#A0BDD9;font-family:Castellar">Empleado</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.Nombre)
+        @Html.HiddenFor(model => model.Cedula)
+        @Html.HiddenFor(model => model.Direccion)
+        @Html.HiddenFor(model => model.Telefono)
+
+        <div class="form-group">
+            <label style="color:#A0BDD9;font-family:'Lucida Sans'" class="control-label col-md-2">
+                Entrada
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Entrada, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Entrada, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label style="color:#A0BDD9;font-family:'Lucida Sans'" class="control-label col-md-2">
+                Salida
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Salida, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Salida, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label style="color:#A0BDD9;font-family:'Lucida Sans'" class="control-label col-md-2">
+                Estado
+            </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <br />
+            <div class="col-md-offset-2 col-md-10">
+                <input style="color:white" type="submit" value="Modificar" class="btn btn-primary" />
+            </div>
+            <div style="text-align:right" class="col-md-6">
+                <div class="btn btn-default">
+                    @Html.ActionLink("Volver a Lista", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
